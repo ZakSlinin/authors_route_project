@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +10,8 @@ class AuthorsRouteLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme  = Theme.of(context);
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black, title: Text('Авторизация', style: theme.textTheme.bodyLarge,),
@@ -29,8 +33,11 @@ class AuthorsRouteLogin extends StatelessWidget {
                       style: theme.textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 20),
-                    TextFormField(
+                    TextField(
+                      style: TextStyle(color: Colors.black),
+                      controller: nameController,
                       decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
                           labelText: 'Имя',
                           labelStyle: theme.textTheme.bodyMedium,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -40,23 +47,34 @@ class AuthorsRouteLogin extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 16),
-                    TextFormField(
+                    TextField(
+                      style: TextStyle(color: Colors.black),
+                      controller: passwordController,
                       decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
                           labelText: 'Пароль',
                           labelStyle: theme.textTheme.bodyMedium,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                           fillColor: const Color.fromARGB(255, 217, 217, 217),
-                          filled: true
+                          filled: true,
                       ),
                     ),
-                    // TODO: Checking for an empty field
                     const SizedBox(height: 16),
                     Container(
                       height: 50,
                       width: double.infinity,
                       child: DecoratedBox(
                           decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(20)),
-                          child: Center(child: Text('Войти', style: theme.textTheme.bodyLarge))
+                          child: TextButton(
+                              onPressed: () {
+                                if (nameController.text.isEmpty || passwordController.text.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('пожалуйста, заполните все поля')));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('вход успешно выполнен')));
+                                }
+                              },
+                              child: Center(child: Text('Войти', style: theme.textTheme.bodyLarge))
+                          )
                       ),
                     ),
                   ],

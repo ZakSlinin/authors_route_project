@@ -6,6 +6,9 @@ class AuthorsRouteReg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme  = Theme.of(context);
+    final nameController = TextEditingController();
+    final passwordController = TextEditingController();
+    final repeatPasswordController = TextEditingController();
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -24,8 +27,11 @@ class AuthorsRouteReg extends StatelessWidget {
                       style: theme.textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 20),
-                    TextFormField(
+                    TextField(
+                      style: TextStyle(color: Colors.black),
+                      controller: nameController,
                       decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
                           labelText: 'Имя',
                           labelStyle: theme.textTheme.bodyMedium,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -35,8 +41,11 @@ class AuthorsRouteReg extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 16),
-                    TextFormField(
+                    TextField(
+                      style: TextStyle(color: Colors.black),
+                      controller: passwordController,
                       decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
                           labelText: 'Пароль',
                           labelStyle: theme.textTheme.bodyMedium,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -46,8 +55,11 @@ class AuthorsRouteReg extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 16),
-                    TextFormField(
+                    TextField(
+                      style: TextStyle(color: Colors.black),
+                      controller: repeatPasswordController,
                       decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
                           labelText: 'Пароль',
                           labelStyle: theme.textTheme.bodyMedium,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -55,14 +67,24 @@ class AuthorsRouteReg extends StatelessWidget {
                           filled: true
                       ),
                     ),
-                    // TODO: Checking for an empty field
                     const SizedBox(height: 16),
                     Container(
                       height: 50,
                       width: 390,
                       child: DecoratedBox(
                           decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(20)),
-                          child: Center(child: Text('Зарегестрироваться', style: theme.textTheme.bodyLarge))
+                          child: TextButton(
+                              onPressed: () {
+                                if (nameController.text.isEmpty || passwordController.text.isEmpty || repeatPasswordController.text.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Пожалуйста, заполните все поля')));
+                                } else if (passwordController.text != repeatPasswordController.text){
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Пароли не совпадают')));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Вход успешно выполнен')));
+                                }
+                              },
+                              child: Center(child: Text('Зарегестрироваться', style: theme.textTheme.bodyLarge))
+                          )
                       ),
                     ),
                     const SizedBox(height: 16),
