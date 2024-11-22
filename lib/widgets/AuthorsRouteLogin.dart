@@ -70,6 +70,7 @@ class AuthorsRouteLogin extends StatelessWidget {
                                 if (nameController.text.isEmpty || passwordController.text.isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('пожалуйста, заполните все поля')));
                                 } else {
+                                  Navigator.of(context).pushNamed('/home');
                                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('вход успешно выполнен')));
                                 }
                               },

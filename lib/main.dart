@@ -1,3 +1,4 @@
+import 'package:authors_route/widgets/AuthorsRouteHomePage.dart';
 import 'package:authors_route/widgets/AuthorsRouteLogin.dart';
 import 'package:authors_route/widgets/AuthorsRouteReg.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,8 @@ class AuthorsRouteApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const AuthorsRouteReg(),
-        '/login': (context) => const AuthorsRouteLogin()
+        '/login': (context) => const AuthorsRouteLogin(),
+        '/home': (context) => const AuthorsRouteHomePage(),
       },
     );
   }

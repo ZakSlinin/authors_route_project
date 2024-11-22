@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthorsRouteReg extends StatelessWidget {
@@ -28,7 +27,7 @@ class AuthorsRouteReg extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     TextField(
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                       controller: nameController,
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
