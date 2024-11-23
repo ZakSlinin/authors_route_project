@@ -1,3 +1,4 @@
+import 'package:authors_route/widgets/AuthorsRouteAddRoute.dart';
 import 'package:authors_route/widgets/AuthorsRouteHomePage.dart';
 import 'package:authors_route/widgets/AuthorsRouteLogin.dart';
 import 'package:authors_route/widgets/AuthorsRouteReg.dart';
@@ -34,6 +35,7 @@ class AuthorsRouteApp extends StatelessWidget {
         '/': (context) => const AuthorsRouteReg(),
         '/login': (context) => const AuthorsRouteLogin(),
         '/home': (context) => const AuthorsRouteHomePage(),
+        '/add-route': (context) => const AuthorsRouteAddRoute()
       },
     );
   }

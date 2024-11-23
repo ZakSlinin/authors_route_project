@@ -41,7 +41,7 @@ class AuthorsRouteReg extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     TextField(
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                       controller: passwordController,
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -55,7 +55,7 @@ class AuthorsRouteReg extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     TextField(
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                       controller: repeatPasswordController,
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -67,7 +67,7 @@ class AuthorsRouteReg extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 390,
                       child: DecoratedBox(
@@ -80,6 +80,7 @@ class AuthorsRouteReg extends StatelessWidget {
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Пароли не совпадают')));
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Вход успешно выполнен')));
+                                  Navigator.of(context).pushNamed('/home');
                                 }
                               },
                               child: Center(child: Text('Зарегестрироваться', style: theme.textTheme.bodyLarge))

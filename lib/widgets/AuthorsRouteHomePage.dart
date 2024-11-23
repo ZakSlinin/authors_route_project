@@ -13,29 +13,38 @@ class AuthorsRouteHomePage extends StatelessWidget {
       },
       child: Scaffold(
         body: DecoratedBox(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage('assets/jpg/bg.jpg'), fit: BoxFit.cover),
             ),
           child: Padding(
-              padding: EdgeInsets.fromLTRB(1, 180, 1, 2),
+              padding: const EdgeInsets.fromLTRB(1, 20, 1, 2),
               child: SafeArea(
                   child: Center(
                     child: Padding(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Container(
-                            color: Colors.white24,
-                            child: Text('яндекс карта', style: theme.textTheme.bodyLarge,),
-                          ), // Yandex map API there
-                          const SizedBox(height: 126,),
+                          InkWell(
+                            onTap: () {
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('pressed my profile')));
+                            },
+                            child: Row(
+                              children: [
+                                Container(child: const Icon(Icons.face_retouching_natural, color: Colors.white, size: 50,) ),
+                                Text('Мой профиль', style: theme.textTheme.bodyLarge,)
+                              ],
+                            ),
+                          ),
+                          const Spacer(),
                           //TODO: REST API
-                          Expanded(
+                          SizedBox(
+                            height: 450,
                             child: DecoratedBox(
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color.fromARGB(215, 217, 217, 217)),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: const Color.fromARGB(215, 217, 217, 217)),
                               child: ListView.builder(
                               itemCount: 5,
-                              itemBuilder: (context, index) => ListTile(
+                              itemBuilder: (context, index) => const ListTile(
                                 title: Text('Название подборки'),
                                 subtitle: Text('описание'),
                                 ),
@@ -43,11 +52,36 @@ class AuthorsRouteHomePage extends StatelessWidget {
                             ),
                           ), // Routes list
                           const SizedBox(height: 16,),
-                          InkWell(
-                            child: Container(
-                              child: Center(child: Text('Создать маршрут'), ),
+                          SizedBox(
+                            width: double.infinity, // Указываем ширину для SizedBox
+                            child: InkWell(
+                              onTap: () {
+                                // Сначала показываем SnackBar, затем переходим на другой экран
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Создать маршрут pressed')),
+                                );
+                                Navigator.of(context).pushNamed('/add-route');
+                              },
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.white,
+                                ),
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    Image.asset('assets/jpg/plus.jpg'),
+                                    const SizedBox(height: 10),
+                                    const Text(
+                                      'Создать маршрут',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
+                          )
+
                         ],
                       ),
                 ),

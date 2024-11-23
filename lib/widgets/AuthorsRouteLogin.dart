@@ -1,6 +1,3 @@
-
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +18,7 @@ class AuthorsRouteLogin extends StatelessWidget {
             image: DecorationImage(image: AssetImage('assets/jpg/bg.jpg'), fit: BoxFit.cover)
         ),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(1, 180, 1, 2),
+          padding: const EdgeInsets.fromLTRB(1, 180, 1, 2),
           child: SafeArea(
             child: Center(
               child: Padding(
@@ -34,7 +31,7 @@ class AuthorsRouteLogin extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     TextField(
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                       controller: nameController,
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -48,7 +45,7 @@ class AuthorsRouteLogin extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     TextField(
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                       controller: passwordController,
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
